@@ -39,9 +39,9 @@ if (!fs.existsSync(uploadsDir)) {
 // PostgreSQL connection
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost',
+    host: 'postgres',
     database: 'new_employee_db',
-    password: 'Password@12345', 
+    password: 'admin123', 
     port: 5432
 });
 
@@ -312,7 +312,7 @@ app.use((err, req, res, next) => {
 
 // Start server
 const IP_ADDRESS = '0.0.0.0'; 
-const PORT = 3000;
+const PORT = 3089;
 app.listen(PORT, IP_ADDRESS, async () => {
     console.log(`Server running on ${IP_ADDRESS}:${PORT}`);
     await initializeDatabase();
