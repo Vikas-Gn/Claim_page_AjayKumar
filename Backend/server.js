@@ -401,7 +401,7 @@ app.use((err, req, res, next) => {
 
 // Start server
 const PORT = 3099;
-const HOST = '65.2.177.203'; // Listen on all interfaces
+const HOST = '0.0.0.0'; // Listen on all interfaces
 
 app.listen(PORT, HOST, async () => {
     console.log(`Server running on http://${HOST}:${PORT}`);
