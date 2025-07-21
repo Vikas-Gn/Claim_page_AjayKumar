@@ -37,25 +37,88 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--purple));
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
             text-align: center;
-            animation: fadeIn 0.8s ease-out;
+            height: 140px;
+            background: linear-gradient(rgb(10, 10, 255), rgb(203, 11, 242));
+            color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
-        h1 {
+        header h1 {
+            margin: 0;
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        @keyframes moveCircles {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-50%); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        .banner-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: moveCircles 15s infinite linear;
+        }
+
+        .circle:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-duration: 15s;
+        }
+
+        .circle:nth-child(2) {
+            top: 50%;
+            left: 70%;
+            animation-duration: 20s;
+            animation-direction: reverse;
+        }
+
+        .circle:nth-child(3) {
+            top: 80%;
+            left: 40%;
+            animation-duration: 25s;
         }
 
         .nav-tabs {
@@ -86,9 +149,15 @@
             color: white;
         }
 
+        .section-title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0 20px;
+        }
+
         .section-title {
             font-size: 1.8rem;
-            margin: 30px 0 20px;
             color: var(--dark-blue);
             position: relative;
             padding-bottom: 10px;
@@ -103,6 +172,33 @@
             height: 4px;
             background: linear-gradient(90deg, var(--primary-blue), var(--purple));
             border-radius: 2px;
+        }
+
+        .filter-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+
+        .filter-dropdown {
+            padding: 8px;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            border: 1px solid var(--gray);
+            background-color: white;
+            color: var(--dark-blue);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-dropdown:hover {
+            border-color: var(--primary-blue);
         }
 
         .section {
@@ -219,54 +315,121 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
         }
 
         .modal-content {
             background: white;
-            border-radius: 10px;
-            padding: 20px;
-            max-width: 500px;
+            border-radius: 12px;
+            padding: 25px;
             width: 90%;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.3s ease-out;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .modal-content:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
 
         .modal-header {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 20px;
             color: var(--dark-blue);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header i {
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            transition: all 0.2s;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .modal-header i:hover {
+            color: var(--red);
+            background-color: rgba(231, 76, 60, 0.1);
+            transform: rotate(90deg);
         }
 
         .modal-body {
             margin-bottom: 20px;
         }
 
+        .modal-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .modal-details .detail-row {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .modal-details .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .modal-details .detail-label {
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
         .modal-details p {
-            margin: 10px 0;
-            font-size: 0.9rem;
+            margin: 0;
+            font-size: 1rem;
+            word-break: break-word;
+            line-height: 1.5;
+            color: #555;
         }
 
         .modal-details a {
             color: var(--primary-blue);
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            padding: 5px 0;
         }
 
         .modal-details a:hover {
+            color: var(--dark-blue);
             text-decoration: underline;
+        }
+
+        .modal-details a i {
+            font-size: 1.1rem;
         }
 
         .modal-actions {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .btn-secondary {
@@ -311,7 +474,7 @@
             flex: 1;
             background: white;
             padding: 15px;
-              height: 300px;
+            height: 300px;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
@@ -341,6 +504,14 @@
             max-height: 250px;
         }
 
+        .truncate {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+            display: inline-block;
+        }
+
         @media (max-width: 768px) {
             .claims-stats {
                 flex-direction: column;
@@ -348,6 +519,19 @@
             .graph-container {
                 max-width: 100%;
                 height: 300px;
+            }
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+            .modal-details .detail-label {
+                margin-top: 10px;
+            }
+            .section-title-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .filter-container {
+                margin-top: 10px;
             }
         }
 
@@ -361,11 +545,68 @@
             40% { transform: translateY(-20px); }
             60% { transform: translateY(-10px); }
         }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content {
+            animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-blue);
+        }
+
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 95%;
+                padding: 20px 15px;
+            }
+            .modal-header {
+                font-size: 1.5rem;
+            }
+            .modal-actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .modal-actions .btn {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
+            <div class="banner-background">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
             <h1>HR Claims Portal</h1>
             <p>Manage employee reimbursement claims</p>
         </header>
@@ -380,12 +621,32 @@
             <p>The claim has been updated. Review other pending claims or check completed actions.</p>
         </div>
 
-        <section id="action-required" class="section active">
-            <h2 class="section-title">Pending Claims</h2>
+        <section id="action-required" class="section active" style="padding: 20px;">
+            <div class="section-title-container">
+                <h2 class="section-title">Pending Claims</h2>
+                <div class="filter-container">
+                    <span class="filter-label">Filters:</span>
+                    <select class="filter-dropdown" id="pendingFilter" onchange="filterClaims('action-required', this.value)">
+                        <option value="all">All Types</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Education">Education</option>
+                        <option value="Meal">Meal</option>
+                        <option value="Equipment">Equipment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
             <div class="claims-stats">
                 <div class="totals" id="pendingTotals">
                     <h3>Pending Claims Summary</h3>
                     <p><strong>Total Amount:</strong> ₹0</p>
+                    <p><strong>Medical:</strong> ₹0</p>
+                    <p><strong>Travel:</strong> ₹0</p>
+                    <p><strong>Education:</strong> ₹0</p>
+                    <p><strong>Meal:</strong> ₹0</p>
+                    <p><strong>Equipment:</strong> ₹0</p>
+                    <p><strong>Other:</strong> ₹0</p>
                 </div>
                 <div class="graph-container">
                     <canvas id="pendingChart"></canvas>
@@ -412,12 +673,34 @@
             </div>
         </section>
 
-        <section id="action-completed" class="section">
-            <h2 class="section-title">Completed Claims</h2>
+        <section id="action-completed" class="section" style="padding: 20px;">
+            <div class="section-title-container">
+                <h2 class="section-title">Completed Claims</h2>
+                <div class="filter-container">
+                    <span class="filter-label">Filters:</span>
+                    <select class="filter-dropdown" id="completedFilter" onchange="filterClaims('action-completed', this.value)">
+                        <option value="all">All</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Education">Education</option>
+                        <option value="Meal">Meal</option>
+                        <option value="Equipment">Equipment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
             <div class="claims-stats">
                 <div class="totals" id="completedTotals">
                     <h3>Completed Claims Summary</h3>
                     <p><strong>Total Amount:</strong> ₹0</p>
+                    <p><strong>Medical:</strong> ₹0</p>
+                    <p><strong>Travel:</strong> ₹0</p>
+                    <p><strong>Education:</strong> ₹0</p>
+                    <p><strong>Meal:</strong> ₹0</p>
+                    <p><strong>Equipment:</strong> ₹0</p>
+                    <p><strong>Other:</strong> ₹0</p>
                 </div>
                 <div class="graph-container">
                     <canvas id="completedChart"></canvas>
@@ -453,9 +736,6 @@
                 <div class="modal-body">
                     <div class="modal-details" id="claimDetails"></div>
                 </div>
-                <div class="modal-actions">
-                    <button class="btn btn-secondary" onclick="closeModal('detailsModal')">Close</button>
-                </div>
             </div>
         </div>
     </div>
@@ -464,24 +744,22 @@
         let pendingChartInstance = null;
         let completedChartInstance = null;
         const CLAIM_TYPES = ['Medical', 'Travel', 'Education', 'Meal', 'Equipment', 'Other'];
-      const TYPE_COLORS = {
-    'Medical': 'rgba(0, 123, 255, 0.6)',        // Bright Blue
-    'Travel': 'rgba(40, 167, 69, 0.6)',         // Emerald Green
-    'Education': 'rgba(102, 16, 242, 0.6)',     // Vivid Purple
-    'Meal': 'rgba(255, 193, 7, 0.6)',           // Amber Yellow
-    'Equipment': 'rgba(23, 162, 184, 0.6)',     // Teal Cyan
-    'Other': 'rgba(220, 53, 69, 0.6)'           // Soft Red
-};
-
-const TYPE_BORDER_COLORS = {
-    'Medical': 'rgba(0, 123, 255, 1)',
-    'Travel': 'rgba(40, 167, 69, 1)',
-    'Education': 'rgba(102, 16, 242, 1)',
-    'Meal': 'rgba(255, 193, 7, 1)',
-    'Equipment': 'rgba(23, 162, 184, 1)',
-    'Other': 'rgba(220, 53, 69, 1)'
-};
-
+        const TYPE_COLORS = {
+            'Medical': 'rgba(0, 123, 255, 0.6)',
+            'Travel': 'rgba(40, 167, 69, 0.6)',
+            'Education': 'rgba(102, 16, 242, 0.6)',
+            'Meal': 'rgba(255, 193, 7, 0.6)',
+            'Equipment': 'rgba(23, 162, 184, 0.6)',
+            'Other': 'rgba(220, 53, 69, 0.6)'
+        };
+        const TYPE_BORDER_COLORS = {
+            'Medical': 'rgba(0, 123, 255, 1)',
+            'Travel': 'rgba(40, 167, 69, 1)',
+            'Education': 'rgba(102, 16, 242, 1)',
+            'Meal': 'rgba(255, 193, 7, 1)',
+            'Equipment': 'rgba(23, 162, 184, 1)',
+            'Other': 'rgba(220, 53, 69, 1)'
+        };
 
         function showSection(sectionId) {
             document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
@@ -490,7 +768,10 @@ const TYPE_BORDER_COLORS = {
             document.querySelector(`.nav-tab[onclick="showSection('${sectionId}')"]`).classList.add('active');
             document.getElementById('successMessage').classList.remove('show');
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-            updateTables();
+            // Reset filters when switching sections
+            document.getElementById('pendingFilter').value = 'all';
+            document.getElementById('completedFilter').value = 'all';
+            updateTables('all');
         }
 
         function closeModal(modalId) {
@@ -547,39 +828,10 @@ const TYPE_BORDER_COLORS = {
             return chartInstanceRef;
         }
 
-        async function updateTables() {
+        async function updateTables(filterValue = 'all') {
             try {
-                console.log('Fetching all claims at', new Date().toISOString());
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 30000);
-                const response = await fetch('http://13.232.178.75:3089/api/claims', {
-                    signal: controller.signal,
-                    headers: { 'Accept': 'application/json' },
-                    mode: 'cors'
-                });
-                clearTimeout(timeoutId);
-                console.log('GET response received:', {
-                    status: response.status,
-                    statusText: response.statusText,
-                    ok: response.ok,
-                    headers: Object.fromEntries(response.headers.entries())
-                });
-
-                let claims;
-                try {
-                    claims = await response.json();
-                    console.log('GET claims parsed:', claims);
-                } catch (jsonError) {
-                    console.error('Error parsing GET JSON response:', jsonError.message, jsonError.stack);
-                    alert(`Server returned invalid response for claims: ${response.status} ${response.statusText}`);
-                    return;
-                }
-
-                if (!response.ok) {
-                    console.log('GET failed with status:', response.status);
-                    alert(`Error fetching claims: ${claims.error || 'Server error (status ' + response.status + ')'}`);
-                    return;
-                }
+                const response = await fetch('http://65.2.177.203:3089/api/claims');
+                const claims = await response.json();
 
                 const pendingTableBody = document.querySelector('#pendingTable tbody');
                 const completedTableBody = document.querySelector('#completedTable tbody');
@@ -588,17 +840,25 @@ const TYPE_BORDER_COLORS = {
                 const pendingTotals = document.getElementById('pendingTotals');
                 const completedTotals = document.getElementById('completedTotals');
 
-                if (!pendingTableBody || !completedTableBody || !noPendingClaims || !noCompletedClaims || !pendingTotals || !completedTotals) {
-                    console.error('Table or no-claims elements not found');
-                    alert('Error rendering claims: UI elements missing');
-                    return;
-                }
-
                 pendingTableBody.innerHTML = '';
                 completedTableBody.innerHTML = '';
 
-                const pendingClaims = claims.filter(claim => claim.status === 'pending');
-                const completedClaims = claims.filter(claim => ['approved', 'rejected'].includes(claim.status));
+                let pendingClaims = claims.filter(claim => claim.status === 'pending');
+                let completedClaims = claims.filter(claim => ['approved', 'rejected'].includes(claim.status));
+
+                // Apply filter for pending claims (type filter only)
+                if (filterValue !== 'all' && !['approved', 'rejected'].includes(filterValue)) {
+                    pendingClaims = pendingClaims.filter(claim => claim.type === filterValue || (filterValue === 'Other' && !CLAIM_TYPES.includes(claim.type)));
+                }
+
+                // Apply filter for completed claims (type or status filter)
+                if (filterValue !== 'all') {
+                    if (['approved', 'rejected'].includes(filterValue)) {
+                        completedClaims = completedClaims.filter(claim => claim.status === filterValue);
+                    } else {
+                        completedClaims = completedClaims.filter(claim => claim.type === filterValue || (filterValue === 'Other' && !CLAIM_TYPES.includes(claim.type)));
+                    }
+                }
 
                 // Pending Claims
                 const typeTotalsPending = CLAIM_TYPES.reduce((acc, type) => {
@@ -634,13 +894,19 @@ const TYPE_BORDER_COLORS = {
                             <td>${claim.claim_id}</td>
                             <td>${claim.type}</td>
                             <td>${claim.employee_id}</td>
-                            <td>${claim.employee_name}</td>
+                            <td><span class="truncate" title="${claim.employee_name}">${claim.employee_name}</span></td>
                             <td>₹${Math.floor(claim.amount).toLocaleString('en-IN')}</td>
                             <td><span class="status status-${claim.status}">${claim.status.charAt(0).toUpperCase() + claim.status.slice(1)}</span></td>
                             <td>
-                                <button class="btn btn-approve" onclick="updateClaimStatus('${claim.claim_id}', 'approved')">Approve</button>
-                                <button class="btn btn-reject" onclick="updateClaimStatus('${claim.claim_id}', 'rejected')">Reject</button>
-                                <button class="btn btn-details" onclick="viewClaim('${claim.claim_id}')">Details</button>
+                                <button class="btn btn-approve" onclick="updateClaimStatus('${claim.claim_id}', 'approved')">
+                                    <i class="fas fa-check"></i> Approve
+                                </button>
+                                <button class="btn btn-reject" onclick="updateClaimStatus('${claim.claim_id}', 'rejected')">
+                                    <i class="fas fa-times"></i> Reject
+                                </button>
+                                <button class="btn btn-details" onclick="viewClaim('${claim.claim_id}')">
+                                    <i class="fas fa-eye"></i> Details
+                                </button>
                             </td>
                         `;
                         pendingTableBody.appendChild(row);
@@ -689,11 +955,13 @@ const TYPE_BORDER_COLORS = {
                             <td>${claim.claim_id}</td>
                             <td>${claim.type}</td>
                             <td>${claim.employee_id}</td>
-                            <td>${claim.employee_name}</td>
+                            <td><span class="truncate" title="${claim.employee_name}">${claim.employee_name}</span></td>
                             <td>₹${Math.floor(claim.amount).toLocaleString('en-IN')}</td>
                             <td><span class="status status-${claim.status}">${claim.status.charAt(0).toUpperCase() + claim.status.slice(1)}</span></td>
                             <td>
-                                <button class="btn btn-details" onclick="viewClaim('${claim.claim_id}')">Details</button>
+                                <button class="btn btn-details" onclick="viewClaim('${claim.claim_id}')">
+                                    <i class="fas fa-eye"></i> Details
+                                </button>
                             </td>
                         `;
                         completedTableBody.appendChild(row);
@@ -708,140 +976,141 @@ const TYPE_BORDER_COLORS = {
                     CLAIM_TYPES.map(type => TYPE_BORDER_COLORS[type])
                 );
             } catch (error) {
-                console.error('GET fetch error:', error.message, error.name, error.stack);
+                console.error('Error fetching claims:', error);
                 alert('Error fetching claims: ' + error.message);
             }
+        }
+
+        function filterClaims(sectionId, filterValue) {
+            updateTables(filterValue);
         }
 
         async function updateClaimStatus(claimId, status) {
             const action = status.charAt(0).toUpperCase() + status.slice(1);
             const confirmed = window.confirm(`Are you sure you want to ${action.toLowerCase()} claim ${claimId}?`);
-            if (!confirmed) {
-                console.log(`Update of claim ${claimId} to ${status} cancelled by user`);
-                return;
-            }
+            if (!confirmed) return;
 
             try {
-                console.log(`Updating claim ${claimId} to status ${status} at`, new Date().toISOString());
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 30000);
-                const response = await fetch(`http://13.232.178.75:3089/api/claims/${claimId}`, {
+                const response = await fetch(`http://65.2.177.203:3089/api/claims/${claimId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify({ status }),
-                    signal: controller.signal,
-                    mode: 'cors'
+                    body: JSON.stringify({ status })
                 });
-                clearTimeout(timeoutId);
-                console.log('PATCH response received:', {
-                    status: response.status,
-                    statusText: response.statusText,
-                    ok: response.ok,
-                    headers: Object.fromEntries(response.headers.entries())
-                });
-
-                let result;
-                try {
-                    result = await response.json();
-                    console.log('PATCH result parsed:', result);
-                } catch (jsonError) {
-                    console.error('Error parsing PATCH JSON response:', jsonError.message, jsonError.stack);
-                    alert(`Server returned invalid response for claim update: ${response.status} ${response.statusText}`);
-                    return;
-                }
 
                 if (!response.ok) {
-                    console.log('PATCH failed with status:', response.status);
-                    alert(`Error updating claim: ${result.error || 'Server error (status ' + response.status + ')'}`);
-                    return;
+                    const error = await response.json();
+                    throw new Error(error.error || 'Failed to update claim');
                 }
 
-                console.log('Claim status updated successfully');
                 document.getElementById('successMessage').classList.add('show');
                 document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-                await updateTables();
+                const currentSection = document.querySelector('.section.active').id;
+                const filterValue = document.getElementById(currentSection === 'action-required' ? 'pendingFilter' : 'completedFilter').value;
+                await updateTables(filterValue);
             } catch (error) {
-                console.error('PATCH fetch error:', error.message, error.name, error.stack);
-                alert('Error updating claim status: ' + error.message);
+                console.error('Error updating claim:', error);
+                alert('Error updating claim: ' + error.message);
             }
         }
 
         async function viewClaim(claimId) {
             try {
-                console.log('Fetching claim details for claim_id:', claimId);
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 30000);
                 const [claimResponse, documentsResponse] = await Promise.all([
-                    fetch(`http://13.232.178.75:3089/api/claims?claim_id=${claimId}`, {
-                        signal: controller.signal,
-                        headers: { 'Accept': 'application/json' },
-                        mode: 'cors'
-                    }),
-                    fetch(`http://13.232.178.75:3089/api/claims/${claimId}/documents`, {
-                        signal: controller.signal,
-                        headers: { 'Accept': 'application/json' },
-                        mode: 'cors'
-                    })
+                    fetch(`http://65.2.177.203:3089/api/claims?claim_id=${claimId}`),
+                    fetch(`http://65.2.177.203:3089/api/claims/${claimId}/documents`)
                 ]);
-                clearTimeout(timeoutId);
-                console.log('Claim response:', {
-                    status: claimResponse.status,
-                    ok: claimResponse.ok,
-                    headers: Object.fromEntries(claimResponse.headers.entries())
-                });
-                console.log('Documents response:', {
-                    status: documentsResponse.status,
-                    ok: documentsResponse.ok,
-                    headers: Object.fromEntries(documentsResponse.headers.entries())
-                });
 
-                let claims, documents;
-                try {
-                    claims = await claimResponse.json();
-                    documents = await documentsResponse.json();
-                    console.log('Claim data:', claims);
-                    console.log('Documents data:', documents);
-                } catch (jsonError) {
-                    console.error('Error parsing claim details JSON:', jsonError.message, jsonError.stack);
-                    alert('Server returned invalid response for claim details');
-                    return;
-                }
+                const claims = await claimResponse.json();
+                const documents = await documentsResponse.json();
 
                 const claim = claims[0];
                 if (!claim) {
-                    alert('Claim not found');
-                    return;
+                    throw new Error('Claim not found');
                 }
 
                 const detailsDiv = document.getElementById('claimDetails');
                 detailsDiv.innerHTML = `
-                    <p><strong>Claim ID:</strong> ${claim.claim_id}</p>
-                    <p><strong>Type:</strong> ${claim.type}</p>
-                    <p><strong>Employee:</strong> ${claim.employee_name}</p>
-                    <p><strong>Email:</strong> ${claim.employee_email}</p>
-                    <p><strong>Employee ID:</strong> ${claim.employee_id}</p>
-                    <p><strong>Department:</strong> ${claim.department}</p>
-                    <p><strong>Date:</strong> ${new Date(claim.claim_date).toLocaleDateString()}</p>
-                    <p><strong>Amount:</strong> ₹${Math.floor(claim.amount).toLocaleString('en-IN')}</p>
-                    <p><strong>Description:</strong> ${claim.description}</p>
-                    <p><strong>Status:</strong> ${claim.status.charAt(0).toUpperCase() + claim.status.slice(1)}</p>
-                    <p><strong>Documents:</strong></p>
-                    ${documents.map(doc => `<p><a href="${doc.file_path}" target="_blank">${doc.file_name}</a></p>`).join('')}
+                    <div class="detail-row">
+                        <p class="detail-label">Claim ID: <span style="color: black;">${claim.claim_id}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Type: <span style="color: black;">${claim.type}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Employee: 
+                            <span style="color: black;" title="${claim.employee_name}">${claim.employee_name.length > 30 ? 
+                                claim.employee_name.substring(0, 30) + '...' : claim.employee_name}</span>
+                        </p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Email: <span style="color: black;">${claim.employee_email}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Employee ID: <span style="color: black;">${claim.employee_id}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Department: <span style="color: black;">${claim.department}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Date: <span style="color: black;">${new Date(claim.claim_date).toLocaleDateString()}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Amount: <span style="color: black;">₹${Math.floor(claim.amount).toLocaleString('en-IN')}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Status: <span style="color: black;">${claim.status.charAt(0).toUpperCase() + claim.status.slice(1)}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Description: <span style="color: black;">${claim.description}</span></p>
+                    </div>
+                    <div class="detail-row">
+                        <p class="detail-label">Documents:</p>
+                        <div style="margin-left: 15px; color: black;">
+                            ${documents.length > 0 ? 
+                                documents.map(doc => `
+                                    <p>
+                                        <a href="javascript:void(0)" onclick="downloadDocument('${doc.id}', '${doc.file_name}')">
+                                            <i class="fas fa-file-download"></i> ${doc.file_name}
+                                        </a>
+                                    </p>
+                                `).join('') : 
+                                '<p>No documents uploaded</p>'}
+                        </div>
+                    </div>
                 `;
-
                 document.getElementById('detailsModal').style.display = 'flex';
             } catch (error) {
-                console.error('Error fetching claim details:', error.message, error.name, error.stack);
-                alert('Error fetching claim details: ' + error.message);
+                console.error('Error viewing claim:', error);
+                alert('Error viewing claim: ' + error.message);
+            }
+        }
+
+        async function downloadDocument(documentId, fileName) {
+            try {
+                const response = await fetch(`http://65.2.177.203:3089/api/documents/${documentId}`);
+                if (!response.ok) {
+                    throw new Error('Failed to download document');
+                }
+                const a = document.createElement('a');
+                a.href = `http://65.2.177.203:3089/api/documents/${documentId}`;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => {
+                    window.URL.revokeObjectURL(a.href);
+                }, 100);
+            } catch (error) {
+                console.error('Error downloading document:', error);
+                alert('Error downloading document: ' + error.message);
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             showSection('action-required');
-            updateTables();
+            updateTables('all');
         });
     </script>
 </body>
