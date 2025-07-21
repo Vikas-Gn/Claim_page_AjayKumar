@@ -33,7 +33,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'Uploads')));
 // Ensure uploads directory exists
 const uploadsDir = path.join(__dirname, 'Uploads');
 if (!fs.existsSync(uploadsDir)) {
-    fs.mkdirSync(UploadsDir, { recursive: true });
+    fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
 // PostgreSQL connection
